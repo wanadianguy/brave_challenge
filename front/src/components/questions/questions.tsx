@@ -18,8 +18,9 @@ const Questions: React.FC = () => {
 	if (!industry) return null;
 
 	const handleSubmit = () => {
-		saveAnswers(answers);
-		setIsSubmitted(true);
+		saveAnswers(answers)
+			.then(() => setIsSubmitted(true))
+			.catch((error) => console.log(error));
 	};
 
 	return (

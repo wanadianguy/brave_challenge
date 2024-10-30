@@ -4,10 +4,17 @@ import requests
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os
 
 from data.industries import industries
 
-database = MongoClient("localhost", 27017, username="admin", password="password").flask_db.answers
+if (os.getenv("ENV") == "production"):
+	load_dotenv("env_variables/.env.prod")
+else:
+	load_dotenv("env_variables/.env.local")
+
+database = MongoClient(os.getenv("MONGO_HOST")).flask_db.answers
 
 # Scrapes content from a website URL and returns extracted text
 def scrape_content(url):

@@ -1,0 +1,3 @@
+-> not in all languages
+-> local data (static) -> AI training would be better
+-> would better as sort of browser extension to scrape visited websites and base surveys on that

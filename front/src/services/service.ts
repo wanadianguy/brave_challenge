@@ -1,17 +1,14 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5100/classify";
+const API_URL = "http://localhost:5001/questions";
 
-const config = {
-	headers: {
-		"Access-Control-Allow-Origin": "*",
-	},
-};
-
-const classify = (url: string) => {
-	return axios.post(API_URL, { url }, config);
-};
-
-export default {
-	classify,
+export const getQuestions = (url: string) => {
+	return axios.get(API_URL, {
+		headers: {
+			"Access-Control-Allow-Origin": "*",
+		},
+		params: {
+			url: url,
+		},
+	});
 };

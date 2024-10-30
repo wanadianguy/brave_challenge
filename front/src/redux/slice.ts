@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import classifyService from "../services/service";
+import { getQuestions } from "../services/service";
 
 interface Question {
 	question: string;
@@ -24,7 +24,7 @@ export const classifyURL = createAsyncThunk(
 	"classify/classifyURL",
 	async (url: string, { rejectWithValue }) => {
 		try {
-			const response = await classifyService.classify(url);
+			const response = await getQuestions(url);
 			return response.data;
 		} catch (error) {
 			return rejectWithValue("Failed to classify the URL");

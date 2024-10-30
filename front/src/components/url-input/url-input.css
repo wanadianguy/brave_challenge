@@ -1,0 +1,32 @@
+.form {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.url-button {
+	background-color: white;
+	border: none;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	padding: 0.5rem;
+}
+
+.url-button:hover {
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.url-button:active {
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.input {
+	background-color: white;
+	padding: 0.5rem;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.input:hover {
+	box-shadow:
+		rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+		rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}

@@ -1,4 +1,5 @@
 .app {
+	display: grid;
 	justify-self: center;
 	justify-items: center;
 	padding-top: 10rem;

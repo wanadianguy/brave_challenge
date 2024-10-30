@@ -32,7 +32,7 @@ const Questions: React.FC = () => {
 				<>
 					<h2 className="industry">Website's industry: {industry}</h2>
 					<h3>Questions related to that field:</h3>
-					<form>
+					<form className="form">
 						{questions.map((question, index) => {
 							answers.form.push({
 								question: question.question,

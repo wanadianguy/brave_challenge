@@ -9,7 +9,9 @@ const Questions: React.FC = () => {
 		(state: RootState) => state.classify,
 	);
 
-	var answers: { question: string; answer: string }[] = [];
+	var answers: { form: { question: string; answer: string }[] } = {
+		form: [],
+	};
 
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -17,7 +19,8 @@ const Questions: React.FC = () => {
 	if (error) return <p>Error: {error}</p>;
 	if (!industry) return null;
 
-	const handleSubmit = () => {
+	const handleSubmit = (event: React.FormEvent) => {
+		event.preventDefault();
 		saveAnswers(answers)
 			.then(() => setIsSubmitted(true))
 			.catch((error) => console.log(error));
@@ -31,7 +34,7 @@ const Questions: React.FC = () => {
 					<h3>Questions related to that field:</h3>
 					<form>
 						{questions.map((question, index) => {
-							answers.push({
+							answers.form.push({
 								question: question.question,
 								answer: "",
 							});
@@ -44,7 +47,7 @@ const Questions: React.FC = () => {
 												type="radio"
 												name={`answer-${index}`}
 												onClick={() => {
-													answers[index] = {
+													answers.form[index] = {
 														question:
 															question.question,
 														answer: option,

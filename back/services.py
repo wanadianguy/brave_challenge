@@ -1,3 +1,4 @@
+import json
 from bs4 import BeautifulSoup
 import requests
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -6,7 +7,7 @@ from pymongo import MongoClient
 
 from data.industries import industries
 
-database = MongoClient('localhost', 27017, username='admin', password='password').flask_db.answers
+database = MongoClient("localhost", 27017, username="admin", password="password").flask_db.answers
 
 # Scrapes content from a website URL and returns extracted text
 def scrape_content(url):

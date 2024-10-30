@@ -56,6 +56,7 @@ def post_answers():
         save_answers(data)
         return jsonify({"message": "data stored"}), 204
     except Exception as error:
+        print(error)
         return jsonify({"error": str(error)}), 500
 
 if __name__ == "__main__":

@@ -15,3 +15,6 @@ python3 api.py
 # Cleans up when server stops
 echo cleaning up
 deactivate
+
+# Tries calling the /questions endpoint
+#curl -X GET http://localhost:5100/questions -H "Content-Type: application/json" -d '{"url": "https://google.com"}'

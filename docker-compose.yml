@@ -1,0 +1,53 @@
+name: "brave_challenge"
+services:
+    database:
+        container_name: "database"
+        build:
+            context: "./back"
+            dockerfile: "database.Dockerfile"
+        networks:
+            - "database"
+        profiles:
+            - all
+            - backend
+
+    api:
+        container_name: "api"
+        platform: linux/arm64
+        depends_on:
+            - database
+        build:
+            context: "./back"
+            dockerfile: "api.Dockerfile"
+        ports:
+            - "5100:5100"
+        networks:
+            - "api"
+            - "database"
+        profiles:
+            - all
+            - backend
+
+    frontend:
+        container_name: "frontend"
+        platform: linux/arm64
+        depends_on:
+            - api
+        build:
+            context: "./front"
+            dockerfile: "front.Dockerfile"
+        ports:
+            - "3000:3000"
+        networks:
+            - "frontend"
+        profiles:
+            - all
+            - frontend
+
+networks:
+    database:
+        driver: bridge
+    api:
+        driver: bridge
+    frontend:
+        driver: bridge
